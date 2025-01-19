@@ -60,13 +60,29 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.lifecycle.runtime.compose)
+
+    // Hilt
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.navigation.compose)
+
     // Coil Gif
     implementation(libs.coil.gif)
+    implementation(libs.coil)
+
+    // Detekt
     detektPlugins(libs.detekt)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation (libs.glide)
+    implementation (libs.landscapist.glide)
+
+    implementation(libs.serialzer)
 }
 
 detekt {
