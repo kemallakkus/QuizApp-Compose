@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://api.canerture.com/quiz"
-
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
