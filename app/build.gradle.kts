@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.plugin)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -25,13 +26,13 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "BASE_URL", "\"https://api.canerture.com/quiz\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.canerture.com/quiz/\"")
             signingConfig = signingConfigs.getByName("debug")
         }
 
         debug {
             isMinifyEnabled = false
-            buildConfigField("String", "BASE_URL", "\"https://api.canerture.com/quiz\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.canerture.com/quiz/\"")
         }
     }
 
@@ -97,6 +98,19 @@ dependencies {
 
     // Serialization
     implementation(libs.serialzer) // Kotlinx Serialization: JSON serileştirme ve deserileştirme.
+
+    // Preferences DataStore (Anahtar-değer depolama)
+    //noinspection GradleDependency
+    implementation(libs.androidx.datastore.preferences)
+
+    implementation (libs.androidx.core.splashscreen)
+
+    // Chucker Debug
+    debugImplementation(libs.library)
+
+    // Chucker Release (sadece crash raporları için)
+    releaseImplementation(libs.library.no.op)
+
 }
 
 detekt {

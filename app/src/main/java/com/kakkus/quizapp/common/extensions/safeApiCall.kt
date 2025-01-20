@@ -15,6 +15,6 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<T> {
             Result.failure(e) // Ağ bağlantı hataları
         } catch (e: Exception) {
             Result.failure(e) // Diğer hatalar
-        }
+        } as Result<T>
     }
 }
